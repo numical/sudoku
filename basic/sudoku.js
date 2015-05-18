@@ -36,15 +36,16 @@
         GUI.RESULT.innerHTML = '';
     }
 
-    function setSerialisedValueFromGrid( cellIndex ){
-        var cellValue, newSerialisedValue;
-        cellValue = getGridCell( cellIndex ).value;
-        if( !isValidHint( cellValue ) ){
-            cellValue = '.';
+    function setSerialisedValueFromGrid(){
+        var cellIndex, newSerialisedValue = '', cellValue;
+        for( cellIndex = 0; cellIndex < 81; cellIndex += 1 ){
+            cellValue = getGridCell( cellIndex ).value;
+            if( isValidHint( cellValue ) ){
+                newSerialisedValue += cellValue;
+            } else{
+                newSerialisedValue += '.';
+            }
         }
-        newSerialisedValue = GUI.SERIALISED.value.substr( 0, cellIndex )
-            + cellValue
-            + GUI.SERIALISED.value.substr( cellIndex + 1 );
         GUI.SERIALISED.value = newSerialisedValue;
         enableOrDisableSolve();
         hideResult();
@@ -81,13 +82,12 @@
     }
 
     function drawGrid(){
-        var gridHTML, row, column, cellIndex, cellClass;
+        var gridHTML, row, column, cellClass;
         // create table html
         gridHTML = '<tbody>';
         for( row = 0; row < 9; row += 1 ){
             gridHTML += '<tr>';
             for( column = 0; column < 9; column += 1 ){
-                cellIndex = 9 * row + column;
                 if( (row + 1) % 3 === 0 && column % 3 === 0 ){
                     cellClass = 'cell3';
                 } else if( (row + 1) % 3 === 0 ){
@@ -100,12 +100,9 @@
                 gridHTML += '<td class="';
                 gridHTML += cellClass;
                 gridHTML += '"><input class="input" type="text" size="1" maxlength="1";';
-                gridHTML += ' oninput="sudoku.update(';
-                gridHTML += cellIndex;
-                gridHTML += ')"';
-                gridHTML += ' id="';
+                gridHTML += ' oninput="sudoku.update()" id="';
                 gridHTML += GRID_CELL_ID_PREFIX;
-                gridHTML += cellIndex;
+                gridHTML += (9 * row + column);
                 gridHTML += '"></td>';
             }
             gridHTML += '</tr>';
@@ -119,12 +116,15 @@
     }
 
     function solve(){
-        var input, outputs, message, serialised;
+        var input, outputs, message, serialised = '';
 
+        // lazy instantiate solver
         if( SOLVER === null ){
             SOLVER = sudoku_solver();
         }
+        // ensure input has 81 characters
         input = ( GUI.SERIALISED.value + SERIALISED_FORMS.BLANK ).substr( 0, 81 );
+        // solve!
         outputs = SOLVER( input );
         switch( outputs.length ){
             case 0:
@@ -138,7 +138,6 @@
 
         }
         if( outputs.length > 0 ){
-            serialised = '';
             outputs[0].forEach( function( digit ){
                 serialised += digit;
             } );
