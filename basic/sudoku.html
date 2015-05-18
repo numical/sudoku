@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        @import url("sudoku.css");
+    </style>
+    <title>Sudoku - Basic Implementation</title>
+</head>
+<body onLoad="drawGrid()">
+<div>
+    <h2>Basic Sudoku Implementation</h2>
+</div>
+<div>
+    <input id="serialised" type="text" size="81" maxLength="81"/>
+</div>
+<div>
+    <table id="grid"></table>
+</div>
+<div>
+    <label id="result"></label>
+</div>
+<div>
+    <button onclick="reset()">Reset</button>
+    <button id="solve" disabled="true" onclick="solve()">Solve (15+ hints needed)</button>
+</div>
+
+<script src="sudoku.js"></script>
+<script src="../reference/kudoku.js"></script>
+</body>
+</html>

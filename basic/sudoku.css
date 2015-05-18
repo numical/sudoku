@@ -1,0 +1,72 @@
+/* page layout */
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    text-align: center;
+}
+
+body div {
+    margin: 1em;
+}
+
+/* global behaviour */
+input {
+    text-align: center;
+}
+
+button {
+    width: 20%;
+}
+
+label {
+    color: red;
+}
+
+/* suduku grid */
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    border-collapse: collapse
+}
+
+td input {
+    border: 0;
+    width: 2em;
+    height: 2em;
+}
+
+.cell {
+    width: 1em;
+    height: 1em;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    padding: 0.3em
+}
+
+.cell1 {
+    width: 1em;
+    height: 1em;
+    border-bottom: 2px solid;
+    border-left: 1px solid;
+    padding: 0.3em
+}
+
+.cell2 {
+    width: 1em;
+    height: 1em;
+    border-bottom: 1px solid;
+    border-left: 2px solid;
+    padding: 0.3em
+}
+
+.cell3 {
+    width: 1em;
+    height: 1em;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    padding: 0.3em
+}
+
