@@ -7,7 +7,7 @@
     </style>
     <title>Sudoku - Basic Implementation</title>
 </head>
-<body onLoad="drawGrid()">
+<body onLoad="sudoku.drawGrid()">
 <div>
     <h2>Basic Sudoku Implementation</h2>
 </div>
@@ -21,8 +21,8 @@
     <label id="result"></label>
 </div>
 <div>
-    <button onclick="reset()">Reset</button>
-    <button id="solve" disabled="true" onclick="solve()">Solve (15+ hints needed)</button>
+    <button onclick="sudoku.reset()">Reset</button>
+    <button id="solve" disabled="true" onclick="sudoku.solve()">Solve (15+ hints needed)</button>
 </div>
 
 <script src="sudoku.js"></script>
