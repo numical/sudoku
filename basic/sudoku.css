@@ -38,12 +38,13 @@ td input {
     height: 2em;
 }
 
+
 .cell {
     width: 1em;
     height: 1em;
     border-bottom: 1px solid;
     border-left: 1px solid;
-    padding: 0.3em
+    padding: 0.3em;
 }
 
 .cell1 {
@@ -59,7 +60,7 @@ td input {
     height: 1em;
     border-bottom: 1px solid;
     border-left: 2px solid;
-    padding: 0.3em
+    padding: 0.3em;
 }
 
 .cell3 {
@@ -68,5 +69,9 @@ td input {
     border-bottom: 2px solid;
     border-left: 2px solid;
     padding: 0.3em
+}
+
+.errorCell {
+    background-color: rgba(255, 0, 0, 0.5);
 }
 
