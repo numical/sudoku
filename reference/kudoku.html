@@ -90,11 +90,11 @@
             if( match.length == 2 && match[1].length >= 81 ){
                 document.getElementById( 'text' ).value = match[1];
                 set_9x9( match[1] );
-                set = true
+                setFromDigitArray = true
             }
         }
         // if the grid is empty, set the grid with "Easter Monster"
-        if( !set ){
+        if( !setFromDigitArray ){
             document.getElementById( 'text' ).value = '1.......2.9.4...5...6...7...5.9.3.......7.......85..4.7.....6...3...9.8...2.....1';
             set_9x9( document.getElementById( 'text' ).value )
         }

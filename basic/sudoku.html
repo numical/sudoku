@@ -11,18 +11,25 @@
 <div>
     <h2>Basic Sudoku Implementation</h2>
 </div>
+
 <div>
     <input id="serialised" type="text" size="81" maxLength="81"/>
 </div>
+
 <div>
     <table id="grid"></table>
 </div>
-<div>
-    <label id="result"></label>
+
+<div id="result">
 </div>
+
 <div>
     <button onclick="sudoku.reset()">Reset</button>
     <button id="solve" disabled="true" onclick="sudoku.solve()">Solve (15+ hints needed)</button>
+</div>
+
+<div id="thanks">
+    With thanks to <a href="https://attractivechaos.github.io/plb/kudoku.html">The Kudoku Sudoku Solver</a>
 </div>
 
 <script src="sudoku.js"></script>

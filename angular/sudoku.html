@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        @import url("sudoku.css");
+    </style>
+    <title>Sudoku - Angular Implementation</title>
+</head>
+<body ng-app="ngSudoku"> <!-- app -->
+<div>
+    <h2>Angular Sudoku Implementation</h2>
+</div>
+
+<div ng-controller="ngSudokuCtrl"> <!-- controller -->
+
+    <div>
+        <input type="text" size="81" maxLength="81" ng-model="model.serialisedForm"/> <!-- model -->
+    </div>
+
+    <div>
+        <table ng-table="">
+            <tr ng-repeat="row in model.rows">
+                <td ng-repeat="column in row">
+                    <input class="input" type="text" size="1" maxlength="1" ng-model="column"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="result">
+        {{ result }} <!-- template -->
+    </div>
+
+    <div>
+        <button ng-click="reset()">Reset</button>
+        <button ng-click="solve()">Solve (15+ hints needed)</button>
+    </div>
+
+</div>
+
+<div id="thanks">
+    With thanks to <a href="https://attractivechaos.github.io/plb/kudoku.html">The Kudoku Sudoku Solver</a>
+</div>
+
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ngSudokuCtrl.js"></script>
+<script src="js/ngSudokuModel.js"></script>
+<script src="js/ngSudokuSolver.js"></script>
+<script src="../reference/kudoku.js"></script>
+</body>
+</html>
