@@ -4,6 +4,10 @@ ngSudoku.controller( 'ngSudokuCtrl',
         $scope.model = model;
         $scope.result = '';
 
+        $scope.$watch( model.grid, function( newValues, oldValues ){
+            console.log( newValues );
+        } );
+
         $scope.solve = function(){
             var outputs = solver.solve( model.serialisedForm );
             switch( outputs.length ){

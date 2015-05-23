@@ -207,25 +207,14 @@
     }
 
     function drawGrid(){
-        var gridHTML, row, column, cellIndex, cellClass;
+        var gridHTML, row, column, cellIndex;
         // create table html
         gridHTML = '<tbody>';
         for( row = 0; row < 9; row += 1 ){
             gridHTML += '<tr>';
             for( column = 0; column < 9; column += 1 ){
                 cellIndex = (9 * row + column);
-                if( (row + 1) % 3 === 0 && column % 3 === 0 ){
-                    cellClass = 'cell3';
-                } else if( (row + 1) % 3 === 0 ){
-                    cellClass = 'cell1';
-                } else if( column % 3 === 0 ){
-                    cellClass = 'cell2';
-                } else{
-                    cellClass = 'cell';
-                }
-                gridHTML += '<td class="';
-                gridHTML += cellClass;
-                gridHTML += '"><input class="input" type="text" size="1" maxlength="1";';
+                gridHTML += '<td><input class="input" type="text" size="1" maxlength="1";';
                 gridHTML += ' oninput="sudoku.gridUpdated(';
                 gridHTML += cellIndex;
                 gridHTML += ')" id="';

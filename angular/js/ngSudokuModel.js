@@ -8,7 +8,7 @@ ngSudoku.service( 'ngSudokuModel', function(){
 
     this.serialisedForm = SERIALISED_FORMS.BLANK;
 
-    this.rows = [
+    this.grid = [
         [1, 2, 3, 4, 5, 6, 7, 8, 9],
         [2, 3, 4, 5, 6, 7, 8, 9, 1],
         [3, 4, 5, 6, 7, 8, 9, 1, 2],
