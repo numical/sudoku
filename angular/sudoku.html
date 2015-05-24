@@ -15,14 +15,24 @@
 <div ng-controller="ngSudokuCtrl"> <!-- controller -->
 
     <div>
-        <input type="text" size="81" maxLength="81" ng-model="model.serialisedForm"/> <!-- model -->
+        <input type="text"
+               size="81"
+               maxLength="81"
+               ng-model="model.serialisedValue"
+               ng-model-options="{ getterSetter: true }"/>
     </div>
 
     <div>
         <table ng-table="">
             <tr ng-repeat="row in model.grid">
-                <td ng-repeat="column in row">
-                    <input class="input" type="text" size="1" maxlength="1" ng-model="column"/>
+                <td ng-repeat="cell in row">
+                    <input class="input"
+                           type="text"
+                           size="1"
+                           maxlength="1"
+                           ng-model="cell.value"
+                           ng-model-options="{ getterSetter: true }"
+                           ng-class="{ errorCell: !cell.valid }"/>
                 </td>
             </tr>
         </table>
