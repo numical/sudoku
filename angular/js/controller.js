@@ -1,15 +1,11 @@
-ngSudoku.controller( 'ngSudokuCtrl',
-    ['$scope', 'ngSudokuModel', 'ngSudokuSolver', function( $scope, model, solver ){
+ngSudoku.controller( 'controller',
+    ['$scope', 'model', 'solver', function( $scope, model, solver ){
 
         $scope.model = model;
         $scope.result = '';
 
-        $scope.$watch( model.grid, function( newValues, oldValues ){
-            console.log( newValues );
-        } );
-
         $scope.solve = function(){
-            var outputs = solver.solve( model.serialisedForm );
+            var outputs = solver( model.serialisedForm() );
             switch( outputs.length ){
                 case 0:
                     $scope.result = "No Solution";
@@ -21,7 +17,7 @@ ngSudoku.controller( 'ngSudokuCtrl',
                     $scope.result = "Multiple Solutions";
             }
             if( outputs.length > 0 ){
-                model.setFromDigitArray( outputs[0] );
+                model.set( outputs[0] );
             }
         };
 
@@ -30,6 +26,10 @@ ngSudoku.controller( 'ngSudokuCtrl',
             $scope.result = '';
         };
 
-        // initialise
-        $scope.reset();
+        $scope.$watch(
+            'model.grid',
+            function( newValues, oldValues ){
+                model.validate();
+            },
+            true );
     }] );

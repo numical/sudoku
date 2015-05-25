@@ -12,24 +12,33 @@
     <h2>Angular Sudoku Implementation</h2>
 </div>
 
-<div ng-controller="ngSudokuCtrl"> <!-- controller -->
+<div ng-controller="controller">
 
     <div>
-        <input type="text" size="81" maxLength="81" ng-model="model.serialisedForm"/> <!-- model -->
+        <input type="text"
+               size="81"
+               maxLength="81"
+               ng-model="model.serialisedForm"
+               ng-model-options="{ getterSetter: true }"/>
     </div>
 
     <div>
         <table ng-table="">
             <tr ng-repeat="row in model.grid">
-                <td ng-repeat="column in row">
-                    <input class="input" type="text" size="1" maxlength="1" ng-model="column"/>
+                <td ng-repeat="cell in row">
+                    <input class="input"
+                           type="text"
+                           size="1"
+                           maxlength="1"
+                           ng-model="cell.value"
+                           ng-class="{ errorCell: !cell.valid }"/>
                 </td>
             </tr>
         </table>
     </div>
 
     <div id="result">
-        {{ result }} <!-- template -->
+        {{ result }}
     </div>
 
     <div>
@@ -45,9 +54,8 @@
 
 <script src="js/angular.min.js"></script>
 <script src="js/app.js"></script>
-<script src="js/ngSudokuCtrl.js"></script>
-<script src="js/ngSudokuModel.js"></script>
-<script src="js/ngSudokuSolver.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/model.js"></script>
 <script src="../reference/kudoku.js"></script>
 </body>
 </html>
